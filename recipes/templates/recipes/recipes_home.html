@@ -1,0 +1,33 @@
+<!-- Extends base.html located in src/templates/base.html -->
+
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block title %}
+    Home - The Recipe App
+{% endblock %}
+
+{% block content %}
+<div class="container">
+    <h2 class="my-4">Welcome to The Recipe App</h2>
+    <p>Create and store your recipes here.</p>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Browse Recipes</h5>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">Or Create your own!</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

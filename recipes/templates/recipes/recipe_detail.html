@@ -1,0 +1,57 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h2 class="card-title text-center">Details: {{ object.name }}</h2>
+                    
+                    <p><strong>Title:</strong> {{ object.name }}</p>
+
+                    <p><strong>Author:</strong> 
+                        {% if object.author_name %}
+                            {{ object.author_name }}
+                        {% else %}
+                            Unknown
+                        {% endif %}
+                    </p>
+
+                    <p><strong>Cuisine:</strong> 
+                        {% for cuisine in object.cuisine.all %}
+                            {{ cuisine.name }}{% if not forloop.last %}, {% endif %}
+                        {% endfor %}
+                    </p>
+
+                    <p><strong>Description:</strong></p>
+                    <p class="text-muted">{{ object.description }}</p>
+
+                    <p><strong>Directions:</strong></p>
+                    <p class="text-muted">{{ object.directions }}</p>
+
+                    <p><strong>Cooking Time:</strong> {{ object.cooking_time }} minutes</p>
+
+                    <p><strong>Ingredients:</strong></p>
+                    <ul class="list-group mb-3">
+                        {% for ingredient in object.ingredients.all %}
+                            <li class="list-group-item">{{ ingredient.name }}</li>
+                        {% endfor %}
+                    </ul>
+
+                    <p><strong>Difficulty:</strong> 
+                        <span class="badge bg-info text-dark">{{ object.difficulty }}</span>
+                    </p>
+
+                    {% if object.pic %}
+                    <div class="text-center mb-4">
+                        <img src="{{ object.pic.url }}" class="img-fluid rounded" alt="Recipe image" width="200" height="300">
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

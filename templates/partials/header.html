@@ -1,0 +1,25 @@
+<nav class="navbar navbar-light bg-light flex-column">
+  <div class="w-100 text-center">
+    <a class="navbar-brand" href="/">The Recipe App</a>
+  </div>
+  <div class="w-100">
+    <ul class="navbar-nav d-flex justify-content-center w-100 flex-row">
+      <li class="nav-item active">
+        <a class="nav-link" href="/">Home</a>
+      </li>
+      {% if user.is_authenticated %}
+        <li class="nav-item">
+          <a class="nav-link" href="/recipes">Recipes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'logout'%}">Logout</a>
+        </li>
+      {% else %}
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'login' %}">Login</a>
+        </li>
+      {% endif %}
+    </ul>
+  </div>
+</nav>
+
